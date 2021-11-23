@@ -6,3 +6,9 @@ make install
 # if make install fails, use
 # swift build -c release --disable-sandbox
 # this is probably just a temporary fix 11/22/2021
+
+#Also need some dependencies
+sudo yum install libicu-dev
+sum install llvm-symbolizer
+sudo yum install clang
+sudo yum install zlib
