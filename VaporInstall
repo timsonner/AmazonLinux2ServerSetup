@@ -1,0 +1,8 @@
+git clone https://github.com/vapor/toolbox.git
+cd toolbox
+git checkout main
+
+make install
+# if make install fails, use
+# swift build -c release --disable-sandbox
+# this is probably just a temporary fix 11/22/2021
