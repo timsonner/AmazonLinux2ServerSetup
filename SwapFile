@@ -1,0 +1,13 @@
+# The reason for this swap is that Vapor will error out if it runs out of memory
+# For my EC2 instance this works
+sudo fallocate -l 2G /swapfile
+# this fallocate could possibly work as 1G, I don't know, I went for 2 and it works
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+sudo swapon --show
+sudo free -h
+cat /proc/sys/vm/swappiness
+sudo sysctl vm.swappiness=10
+sudo echo "vm.swappiness=10" >> /etc/sysctl.conf
