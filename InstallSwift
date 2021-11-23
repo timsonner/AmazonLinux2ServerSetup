@@ -1,0 +1,4 @@
+wget https://download.swift.org/swift-5.5.1-release/amazonlinux2/swift-5.5.1-RELEASE/swift-5.5.1-RELEASE-amazonlinux2.tar.gz
+tar xzf swift-5.5.1-RELEASE-amazonlinux2.tar.gz 
+sudo mv swift-5.5.1-RELEASE-amazonlinux2 /usr/share/swift
+#add path to .bashrc
