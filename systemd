@@ -1,0 +1,37 @@
+
+sudo nano /usr/local/bin/runVaporServer.sh
+
+#add this to file
+#!/bin/bash
+runVaporServer.service: ## Starting ##" | systemd-cat -p info
+~/vaporServer/vapor run serve
+#EOF
+
+sudo chmod +x /usr/local/bin/runVaporServer.sh
+
+#sudo systemctl list-unit-files --type-service
+
+sudo nano /etc/systemd/system/runVaporService.service
+#Add to file
+[Unit]
+Description=Runs the Vapor Server
+
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/runVaporServer.sh
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+#EOF
+sudo chmod 640 /etc/systemd/system/runVaporService.service
+
+sudo systemctl status runVaporService
+sudo systemctl daemon-reload
+sudo systemctl enable runVaporService
+sudo systemctl start runVaporService
