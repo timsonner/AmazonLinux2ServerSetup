@@ -1,10 +1,16 @@
 
+#the next command here is the location of the vapor project, if running as EC2-User with sudo, you have to do some sym linking like:
+#sudo ln -s /usr/share/swift/usr/bin/swift /usr/bin
+#sudo ln -s /usr/share/vapor /usr/bin
+
 sudo nano /usr/local/bin/runVaporServer.sh
 
 #add this to file
 #!/bin/bash
 runVaporServer.service: ## Starting ##" | systemd-cat -p info
-~/vaporServer/vapor run serve
+#this is where the vapor project is located, I had to cd into the directory, then run vapor run serve
+cd ~/vaporServer/
+vapor run serve
 #EOF
 
 sudo chmod +x /usr/local/bin/runVaporServer.sh
@@ -29,9 +35,10 @@ KillMode=process
 [Install]
 WantedBy=multi-user.target
 #EOF
-sudo chmod 640 /etc/systemd/system/runVaporService.service
 
-sudo systemctl status runVaporService
+sudo chmod 640 /etc/systemd/system/runVaporService.service
 sudo systemctl daemon-reload
 sudo systemctl enable runVaporService
 sudo systemctl start runVaporService
+sudo systemctl status runVaporService
+#to stop: sudo systemctl stop runVaporService
