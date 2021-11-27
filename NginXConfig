@@ -1,5 +1,7 @@
-sudo yum install 
+sudo yum install nginx
 sudo nano /etc/nginx/nginx.conf
+#sudo systemctl start nginx
+#add the following to the config:
 
 # For more information on configuration, see:
 #   * Official English Documentation: http://nginx.org/en/docs/
@@ -96,4 +98,3 @@ http {
 }
 
 
-sudo systemctl start nginx
